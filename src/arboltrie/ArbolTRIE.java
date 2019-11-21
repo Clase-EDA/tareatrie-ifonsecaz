@@ -17,7 +17,7 @@ public class ArbolTRIE {
      */
     public static void main(String[] args) {
         ATrie a=new ATrie();
-        ArrayList<String> res;
+        String[] res={"anti","abs","abbs","fer"};
         
         a.insertaRe("anti");
         a.insertaRe("abs");
@@ -33,8 +33,11 @@ public class ArbolTRIE {
         System.out.println(a.borra("fer"));
         System.out.println(a.buscaRe("fer"));
 */
-        res=a.ordenamientoLexicografico();
+        //a.ordenamientoLexicografico(res);
         
-        System.out.println(res);
+        System.out.println(res.length);
+        for(int i=0; i<res.length; i++){
+            System.out.println(res[i]);
+        }
     }
 }

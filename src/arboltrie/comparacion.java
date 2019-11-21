@@ -23,17 +23,16 @@ public class comparacion {
         File a= new File("D:\\wiki-100k.txt");
         String n;
         String[] palabras= new String[50000];
+        String[] palabras2=new String[50000];
         int i=0;
         Character[] b={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',1,2,3,4,5,6,7,8,9,0,'­'};
         ATrie arbol=new ATrie(b);
-        ArrayList<String> res;
         
         try(Scanner lec= new Scanner(a)){
             while(lec.hasNext()&&i<50000){
                 n=lec.next();
-                palabras[i]=n.toLowerCase();
-                arbol.inserta(n.toLowerCase());
-                
+                palabras[i]=n.toLowerCase(); 
+                palabras2[i]=n.toLowerCase();
                 i++;
             }
             
@@ -44,11 +43,13 @@ public class comparacion {
             
             System.out.println("Tries");
             tiempo=System.nanoTime();
-            res=arbol.ordenamientoLexicografico();
+            arbol.ordenamientoLexicografico(palabras2,b);
             System.out.println(System.nanoTime()-tiempo);
             
-            System.out.println(res);
-            
+            for(int hgfj=0; hgfj<palabras.length; hgfj++){
+                System.out.print(palabras2[hgfj]);
+            }
+            System.out.println("");
             for(int hgfj=0; hgfj<palabras.length; hgfj++){
                 System.out.print(palabras[hgfj]);
             }

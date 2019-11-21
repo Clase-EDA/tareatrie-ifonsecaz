@@ -224,25 +224,31 @@ public class ATrie <T>{
         return res;
     }
     
-    public ArrayList<String> ordenamientoLexicografico(){
-        ArrayList<String> res= new ArrayList();
-        if(raiz!=null){
-            ordenamientoLexicografico("",raiz,res);
+    public String[] ordenamientoLexicografico(String[] res,Character[] simbolos){
+        ATrie aux = new ATrie(simbolos);
+        int[] cont= {0};
+        for(int i=0; i<res.length; i++){
+            aux.inserta(res[i]);
+        }
+        
+        if(aux.raiz!=null){
+            ordenamientoLexicografico("",aux.raiz,res,cont);
         }
         return res;
     }
     
-    private void ordenamientoLexicografico(String cad, NodoTrie<T> act, ArrayList<String> res){
-        String aux;
+    private void ordenamientoLexicografico(String cad, NodoTrie<T> act, String[] res, int[] cont){
+        String aux2;
         if(act.isFinPalabra()>0){
             for(int i=0; i<act.isFinPalabra();i++){
-                res.add(cad);
+                res[cont[0]]=cad;
+                cont[0]=cont[0]+1;
             }
         }
         int pos=act.sigNodo(0);
         while(pos!=-1){
-            aux=cad+simbolos[--pos];
-            ordenamientoLexicografico(aux,act.getNodoPos(pos),res);
+            aux2=cad+simbolos[--pos];
+            ordenamientoLexicografico(aux2,act.getNodoPos(pos),res,cont);
             pos=act.sigNodo(++pos);
         }   
     }

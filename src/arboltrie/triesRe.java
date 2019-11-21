@@ -24,8 +24,8 @@ public class triesRe {
         a.inserta("abbs");
         a.inserta("fer");
         
-        res=a.ordenamientoLexicografico();
+        //res=a.ordenamientoLexicografico();
         
-        System.out.println(res);
+        //System.out.println(res);
     }
 }
